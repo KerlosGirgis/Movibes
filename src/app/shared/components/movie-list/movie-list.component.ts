@@ -1,8 +1,8 @@
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { SharedModule } from './../../shared.module';
 import { Component, Input } from '@angular/core';
-import { MovieService } from '../../services/movie.service';
-import { Movie } from '../../../models/movie';
+import { ApiService } from '../../../core/services/api.service';
+import { Movie } from '../../models/movie';
 import { NgForOf } from '@angular/common';
 
 @Component({
@@ -12,7 +12,7 @@ import { NgForOf } from '@angular/common';
   styleUrl: './movie-list.component.css'
 })
 export class MovieListComponent {
-  constructor(private movieService: MovieService) {}
+  constructor(private apiService: ApiService) {}
   @Input() category: 'now_playing' | 'popular' | 'top_rated' | 'upcoming' = 'popular';
   title: string = '';
   movies: Movie[] = [];
@@ -20,7 +20,7 @@ export class MovieListComponent {
     this.title = this.category.replace(/_/g, ' ').toUpperCase();
   }
   ngOnInit() {
-    this.movieService.getMoviesByCategory(this.category, 6).subscribe((movies) => {
+    this.apiService.getMoviesByCategory(this.category, 6).subscribe((movies) => {
       this.movies = movies;
     });
   }

@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { Movie } from '../../../models/movie';
+import { Movie } from '../../models/movie';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { MovieCardServiceService } from './movie-card-service.service';
