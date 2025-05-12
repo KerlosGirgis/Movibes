@@ -1,0 +1,27 @@
+<div class="wishlist-container">
+    <div class="wishlist-header">
+      <h2 class="wishlist-title">wishlist</h2>
+      <!-- <a href="#" class="see-all">See all</a> -->
+    </div>
+    
+           <div *ngIf="isLoading">
+    <p> Loading....</p>
+  </div>
+
+  <div *ngIf="!isLoading && wishlistedMovies.length === 0">
+    <p>  Favorites list is empty.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2 col-sm-4 col-6" *ngFor="let movie of wishlistedMovies">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </div>
+  </div>
+    <!-- <div class="movie-grid">
+        <app-movie-card
+        class="col-md-2 col-sm-4 col-6"
+        *ngFor="let movie of movies"
+        [movie]="movie"
+      ></app-movie-card> 
+     </div> -->
+  </div>

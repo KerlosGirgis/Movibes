@@ -1,0 +1,131 @@
+
+/* تخصيصات Bootstrap للواجهة العربية */
+.rtl .btn { font-family: 'Tajawal', sans-serif; }
+.toast-top-center {
+  margin-top: 20px;
+  text-align: center;
+}
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #191919;
+  color: #E8E8E8;
+  margin: 0;
+  padding: 0;
+
+
+}
+.toast-top-right {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 1055;
+}
+
+.toast {
+  padding: 20px 24px 20px 60px;
+  font-size: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0.95;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.toast-success {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  border-left: 5px solid #1e7e34;
+   padding: 5px 24px 5px 10px;
+}
+.toast-error {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: #fff;
+  border-left: 5px solid #bd2130;
+   padding: 5px 24px 5px 10px;
+}
+.toast-info {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: #fff;
+  border-left: 5px solid #117a8b;
+   padding: 5px 24px 5px 10px;
+}
+.toast-warning {
+  background: linear-gradient(135deg, #ffc107, #e0a800);
+  color: #212529;
+  border-left: 5px solid #d39e00;
+   padding: 5px 24px 5px 10px;
+}
+
+.toast::before {
+  content: 'ℹ️';
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  font-size: 20px;
+}
+.toast-success::before {
+  content: '✅';
+}
+.toast-error::before {
+  content: '❌';
+}
+.toast-info::before {
+  content: 'ℹ️';
+}
+.toast-warning::before {
+  content: '⚠️';
+}
+
+.toast-close-button {
+  color: inherit;
+  font-size: 18px;
+  opacity: 0.7;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  transition: opacity 0.3s;
+  display: none;
+}
+.toast-close-button:hover {
+  opacity: 1;
+}
+
+.toast-progress {
+  background: rgba(255, 255, 255, 0.5);
+  height: 4px;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  animation: shrink 4s linear forwards;
+}
+
+@keyframes toastIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes toastOut {
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

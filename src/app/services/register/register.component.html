@@ -1,0 +1,122 @@
+<div class="container-fluid vh-100 d-flex position-relative p-0">
+  <!-- Logo -->
+  <div class="position-absolute d-flex align-items-center" style="top: 20px; left: 30px; z-index: 10;">
+    <img src="assets/images/SvgjsG2062 (1).png" alt="Icon" style="width: 24px; height: 24px;" class="me-2">
+    <a routerLink="/movies"><img src="assets/images/logo.png" alt="Logo" style="width: 120px;"></a>
+  </div>
+
+  <div class="row flex-fill m-0">
+    <!-- Left Form Panel -->
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center bg-dark overflow-auto" style="padding: 60px 0;">
+      <div class="w-75" style="margin-top: 60px;">
+        <h3 class="mb-4 text-white">Create an account</h3>
+        <h6 class="mb-4 text-white">Create an account to enjoy all the features of IMDb.</h6>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <!-- Name -->
+          <div class="form-group text-white mb-2">
+            <label>Name:</label>
+            <input type="text" class="form-control" formControlName="name">
+            <div *ngIf="submitted && f['name'].errors" class="text-danger small">
+              <div *ngIf="f['name'].errors['required']">Name is required</div>
+              <div *ngIf="f['name'].errors['pattern']">Only letters allowed</div>
+              <div *ngIf="f['name'].errors['minlength']">Minimum 2 characters</div>
+              <div *ngIf="f['name'].errors['maxlength']">Maximum 50 characters</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group text-white mb-2">
+            <label>Email:</label>
+            <input type="email" class="form-control" formControlName="email">
+            <div *ngIf="submitted && f['email'].errors" class="text-danger small">
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
+              <div *ngIf="f['email'].errors['pattern']">Only Gmail or Yahoo allowed</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group text-white mb-2">
+            <label>Password:</label>
+            <input type="password" class="form-control" formControlName="password">
+            <div *ngIf="submitted && f['password'].errors" class="text-danger small">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+              <div *ngIf="f['password'].errors['minlength']">Minimum 8 characters Password must contain:
+            </div>
+              <div *ngIf="f['password'].errors['weak']">
+    <ul class="mb-0">
+                  <li>Uppercase letter</li>
+                  <li>Lowercase letter</li>
+                  <li>Number</li>
+                  <li>Special character</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group text-white mb-2">
+            <label>Confirm Password:</label>
+            <input type="password" class="form-control" formControlName="confirmPassword">
+            <div *ngIf="submitted && (f['confirmPassword'].errors || registerForm.errors?.['mismatch'])" class="text-danger small">
+              <div *ngIf="f['confirmPassword'].errors?.['required']">Confirmation is required</div>
+              <div *ngIf="registerForm.errors?.['mismatch']">Passwords do not match</div>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group text-white mb-2">
+            <label>Phone:</label>
+            <input type="text" class="form-control" formControlName="phone">
+            <div *ngIf="submitted && f['phone'].errors" class="text-danger small">
+              <div *ngIf="f['phone'].errors['required']">Phone is required</div>
+              <div *ngIf="f['phone'].errors['pattern']">Phone must be 11 digits in format "01150198566"</div>
+            </div>
+          </div>
+
+          <!-- Age -->
+          <div class="form-group text-white mb-2">
+            <label>Age:</label>
+            <input type="number" class="form-control" formControlName="age">
+            <div *ngIf="submitted && f['age'].errors" class="text-danger small">
+              <div *ngIf="f['age'].errors['required']">Age is required</div>
+              <div *ngIf="f['age'].errors['min']">Must be 18 or older</div>
+              <div *ngIf="f['age'].errors['max']">Maximum age is 100</div>
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-check mt-2">
+            <input type="checkbox" class="form-check-input check" formControlName="terms" id="terms">
+            <label class="form-check-label text-white " for="terms">Accept Terms and Conditions</label>
+            <div *ngIf="submitted && f['terms'].errors" class="text-danger small">
+              <div *ngIf="f['terms'].errors['required']">You must accept the terms</div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-info w-100 mt-3">Create account</button>
+
+          <!-- Google Sign in -->
+          <button type="button" class="btn btn-outline-light w-100 mt-2" (click)="googleLogin()">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" style="width: 18px;" class="me-2" />
+            Sign up with Google
+          </button>
+
+          <p class="text-white mt-3">Already have an account? <a routerLink="/login" class="text-warning" class="log-link">Log in</a></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Image Panel -->
+    <div class="col-md-6 d-none d-md-flex flex-column justify-content-center align-items-center text-white"
+         style="background-image: url('assets/images/register.png'); background-size: cover; background-position: center;">
+      <div  style="max-width: 80%;">
+        <h3>Benefits of your free IMDb account</h3>
+        <p><strong>Personalized Recommendations:</strong><br>Discover shows you'll love.</p>
+        <p><strong>Your Ratings:</strong><br>Rate and remember everything you've seen.</p>
+        <p><strong>Contribute to IMDb:</strong><br>Add data and earn badges.</p>
+      </div>
+    </div>
+  </div>
+</div>

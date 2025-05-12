@@ -1,0 +1,10 @@
+<div class="movie-list p-3">
+  <h2 class="title">{{title}}</h2>
+  <div class="movie-list-container row m-auto row-gap-3">
+    <app-movie-card 
+    class="col-md-2 col-sm-4 col-6"
+    *ngFor="let movie of movies"
+    [movie]="movie"
+    ></app-movie-card>
+  </div>
+</div>

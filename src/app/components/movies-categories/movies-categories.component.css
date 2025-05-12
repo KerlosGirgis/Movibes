@@ -1,0 +1,22 @@
+.pagination-button {
+  background-color: white;
+  border: white SOLID 5px;
+  border-radius: 50px;
+  width: 50px;
+  
+}
+.pagination-button2 {
+  background-color: #3DD2CC;
+  border: #3DD2CC SOLID 5px;
+  border-radius: 50px!important;
+  width: 100px;
+  color: white;
+}
+.active {
+  background-color: #3DD2CC;
+  border: #3DD2CC SOLID 5px;
+  border-radius: 50px;
+}
+.disabled {
+  opacity: 0.5;
+}

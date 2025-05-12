@@ -1,0 +1,16 @@
+@if(movies.length > 0)
+{<div class="row m-auto row-gap-3" *ngIf="movies.length > 0">
+  <app-movie-card
+    class="col-md-2 col-sm-4 col-6"
+    *ngFor="let movie of movies"
+    [movie]="movie"
+  ></app-movie-card>
+</div>}
+@else {
+  <div class=" row text-center align-items-center " style="height: 60vh;">
+    <h3 class="col-12 align-self-center">Sorry : No movies found with this title</h3>
+  </div>
+
+}
+
+

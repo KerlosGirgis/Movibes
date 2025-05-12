@@ -1,0 +1,24 @@
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true" [ngClass]="{'show d-block': visible}" (click)="onBackdropClick($event)">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body text-center py-4">
+          <h4 class="mb-4">Login or Register</h4>
+          <p class="mb-4">You Must Login To Add To Wishlist</p>
+          <div class="d-grid gap-3 col-10 mx-auto">
+            <button  class="btn btn-primary btn-lg r-button border-0" (click)="onRegisterClick()">
+              Register
+            </button>
+            <button class="btn btn-outline-primary btn-lg l-button" (click)="onLoginClick()">
+              Login
+            </button>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <small class="text-muted">© 2025 Movibes</small>
+        </div>
+      </div>
+    </div>
+  </div>

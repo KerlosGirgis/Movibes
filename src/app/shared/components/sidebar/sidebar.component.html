@@ -1,0 +1,43 @@
+<!-- <div class="sidebar" [ngClass]="{ 'sidebar': true, 'd-none d-md-block': !isVisible }"> -->
+<div class="sidebar">
+  <img
+    src="/Vector.svg"
+    routerLink="/movies"
+    class="logo"
+    (click)="sidebarService.disppearSidebar()"
+  />
+
+  <ul class="nav flex-column px-3">
+    @for(sec of section;track sec.id){ @if (sec.id == 1) {
+    <li
+      class="nav-item mb-2"
+      routerLink="{{ sec.href }}"
+      routerLinkActive="selected-section"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="sidebarService.disppearSidebar()"
+    >
+      <a class="nav-link text-white">{{ sec.icon }}{{ sec.name }}</a>
+    </li>
+
+    } @else {
+    <li
+      class="nav-item mb-2"
+      [routerLink]="[sec.href, sec.param]"
+      routerLinkActive="selected-section"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="sidebarService.disppearSidebar()"
+    >
+      <a (click)="navigate(sec.id)" class="nav-link text-white"
+        >{{ sec.icon }}{{ sec.name }}</a
+      >
+    </li>
+
+    } } @empty { there is no section }
+    <li>
+      @if (isloged) {   <button  class="btn logout-button" (click)="logout()">
+        log out <i class="bi bi-box-arrow-in-right me-2 log-i"></i>
+      </button>}
+
+    </li>
+  </ul>
+</div>

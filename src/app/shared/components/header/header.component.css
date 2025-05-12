@@ -1,0 +1,170 @@
+.nav-search {
+  background-color: #333;
+  color: #e8e8e8;
+  border-radius: 50px;
+  height: 55px;
+  text-indent:35px ;
+  width: 80%!important;
+  margin-right: 10px;
+}
+.nav-search:focus {
+  outline: 3px solid #3DD2CC!important;
+}
+.reset-button {
+  background-color: #333;
+  color: #e8e8e8;
+  border-radius: 50px;
+  padding: 5px;
+  max-width: 100px;
+  min-width: 50px;
+  outline: none!important;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.reset-active {
+  background-color: #3DD2CC;
+
+}
+.nav-search::placeholder {
+  color: white;
+  text-indent: 15px;
+}
+.profile-img {
+  width: 30px;
+  height: 30px;
+}
+.active-link {
+  background-color: #3DD2CC;
+  border: #3DD2CC SOLID 3px;
+  border-radius: 50%;
+
+
+}
+.heart {
+color: #3DD2CC!important;
+}
+/* .login-btn {
+  background-color: #333;
+  color: #e8e8e8;
+  border-radius: 50px;
+  padding: 15px;
+  width: 100px;
+  outline: none!important;
+  border: none;
+} */
+/* Button Container (for animation) */
+/* Button Container */
+.btn-animated {
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  padding: 2px;
+}
+
+/* Base Button Styles */
+.login-btn {
+  background-color: #333;
+  color: #e8e8e8;
+  border-radius: 50px;
+  padding: 15px;
+  width: 100px;
+  outline: none !important;
+  border: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background-color: #3DD2CC;
+
+}
+
+
+/* Snake Border (Animated Line Drawing) */
+.btn-animated::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid transparent;
+  border-radius: 52px;
+  background: linear-gradient(45deg, #3dd2cc, #2bb8b3);
+  clip-path: polygon(
+    0% 0%,     /* Start top-left */
+    0% 0%,     /* Initial state (no border visible) */
+    0% 100%,   /* Draw down left side */
+    100% 100%, /* Draw across bottom */
+    100% 0%,   /* Draw up right side */
+    0% 0%      /* Close path */
+  );
+  animation: snake-border 2.5s linear infinite;
+}
+
+/* Keyframes for Snake Effect */
+@keyframes snake-border {
+  0% {
+    clip-path: polygon(
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%,
+      0% 0%
+    );
+  }
+  16.6% {
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      0% 100%,
+      0% 0%
+    );
+  }
+  33.3% {
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0% 0%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      100% 0%,
+      100% 0%,
+      0% 0%
+    );
+  }
+  66.6% {
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      100% 0%,
+      0% 0%,
+      0% 0%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      100% 0%,
+      0% 0%,
+      0% 0%
+    );
+  }
+}

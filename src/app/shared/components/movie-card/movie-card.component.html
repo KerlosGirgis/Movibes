@@ -1,0 +1,13 @@
+<div class="card movie-card">
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+    class="card-img"
+    alt="Movie Poster"
+    routerLink="/movies/details/{{ movie.id }}"
+  />
+  <div class="wish-button" (click)="toggleWishlist(movie.id)">
+    <i class="" [ngClass]="isWishlistedF ? 'favorite-btn bi bi-heart-fill' : 'favorite-btn bi bi-heart'"></i>
+  </div>
+  <div class="rating-badge"><i class="bi bi-star-fill"></i> {{movie.vote_average.toPrecision(2)}}</div>
+</div>
+<app-login-register-popup [(visible)]="isModalVisible"></app-login-register-popup>

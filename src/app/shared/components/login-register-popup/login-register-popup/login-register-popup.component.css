@@ -1,0 +1,16 @@
+#authModal{
+
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.r-button{
+  background-color: #3dd2cc;
+}
+.r-button:hover{
+  background-color: #34b4b0;
+}
+.l-button{
+  border-color: #3dd2cc;
+}
+.l-button:hover{
+  background-color: #34b4b0;
+}

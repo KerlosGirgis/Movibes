@@ -1,0 +1,42 @@
+<div class="container w-140 d-flex justify-content-center">
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100">
+    <div class="spinner-border spiner" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Profile Card -->
+  <div *ngIf="!loading && userData" class="profile-container fade-in-up w-100" style="max-width: 500px;">
+    <img
+      [src]="'https://ui-avatars.com/api/?name=' + (userData.name || 'NA') + '&background=ffffff&color=3DD2CC&length=2'"
+      alt="Avatar"
+      class="profile-image mb-3"
+    />
+
+    <h2 class="text-warning text-center">Profile</h2>
+
+    <ul class="list-group list-group-flush text-center bg-transparent">
+      <li class="list-group-item bg-transparent text-white border-0">
+        <strong>Name:</strong> {{ userData.name || 'N/A' }}
+      </li>
+      <li class="list-group-item bg-transparent text-white border-0">
+        <strong>Email:</strong> {{ userData.email || 'N/A' }}
+      </li>
+      <li class="list-group-item bg-transparent text-white border-0" *ngIf="userData.phone">
+        <strong>Phone:</strong> {{ userData.phone }}
+      </li>
+      <li class="list-group-item bg-transparent text-white border-0" *ngIf="userData.age">
+        <strong>Age:</strong> {{ userData.age }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- No Data -->
+  <div *ngIf="!loading && !userData" class="text-center text-danger w-100">
+    <p>No user data found.</p>
+  </div>
+</div>
+
+
