@@ -14,13 +14,9 @@ import { DetailsComponent } from './components/details/details.component';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    MoviesComponent,
-    HeaderComponent,
-    SidebarComponent,
     CommonModule,
-    FormsModule,
-    DetailsComponent,
-  ],
+    FormsModule
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

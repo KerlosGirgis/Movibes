@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink],
 
   styleUrls: ['./not-found.component.css']
 })
