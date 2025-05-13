@@ -27,15 +27,9 @@ a {
   transition: transform 1000ms ease-out;
 }
 
-    .logo-text {
-      font-family: 'Segoe UI', sans-serif;
-      font-weight: bold;
-      color: #3D5AFE;
-    }
-
 .logo {
   cursor: pointer;
-  width:80%;
+  width: 80%;
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -100,7 +94,7 @@ a {
   .content {
     margin-left: 0;
   }
-  .logout-button:hover  i {
+  .logout-button:hover i {
     transform: scale(1.2);
   }
 }

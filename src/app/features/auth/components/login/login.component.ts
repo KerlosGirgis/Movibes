@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../core/services/auth.service';
+import { Movie } from '../../../../shared/models/movie';
+import { ApiService } from '../../../../core/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,14 @@ import { AuthService } from '../../../../core/services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  movie!:Movie;
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private apiService:ApiService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +33,12 @@ export class LoginComponent implements OnInit {
         Validators.pattern(/^[a-zA-Z0-9._%+-]+@(gmail|yahoo)\.com$/)
       ]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+    });
+    this.apiService.getMoviesByCategory("popular", 6).subscribe((movies) => {
+      this.apiService.getMovieById(movies[0].id).subscribe((movie)=>{
+        this.movie=movie
+      })
+      
     });
   }
 
