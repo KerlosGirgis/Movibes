@@ -77,10 +77,6 @@ export class SidebarComponent implements OnInit,OnChanges {
   navigate(id: number) {
     this.selectedSection = id;
   }
-  logout() {
-    this.authService.logout();
-    location.reload();
-  }
 }
 interface ISection {
   icon: string;
