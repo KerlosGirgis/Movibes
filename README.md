@@ -15,11 +15,8 @@
 
 | Home Page                           | Movie Details                        |
 |------------------------------------|--------------------------------------|
-| ![Home](https://your-home-screenshot-url) | ![Details](https://your-details-screenshot-url) |
+| ![Home](screenshots/home.png) | ![Details](screenshots/details.png) |
 
-> _Note: You can host screenshots in your repo under `/assets/screenshots/` or use GitHub Issues uploads to get URLs._
-
----
 
 ## 🚀 Features
 
