@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
+import { Movie } from '../../../../shared/models/movie';
+import { ApiService } from '../../../../core/services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -23,12 +25,14 @@ import { AuthService } from '../../../../core/services/auth.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   submitted = false;
+  movie!:Movie;
 
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private apiService:ApiService
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +65,12 @@ export class RegisterComponent implements OnInit {
       ]],
       terms: [false, Validators.requiredTrue]
     }, { validators: this.passwordsMatchValidator });
+        this.apiService.getMoviesByCategory("top_rated", 6).subscribe((movies) => {
+      this.apiService.getMovieById(movies[0].id).subscribe((movie)=>{
+        this.movie=movie
+      })
+      
+    });
   }
 
   get f() {
