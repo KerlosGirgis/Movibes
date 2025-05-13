@@ -16,6 +16,7 @@
 | Home Page                           | Movie Details                        |
 |------------------------------------|--------------------------------------|
 | ![Home](screenshots/home.png) | ![Details](screenshots/details.png) |
+| ![Home](screenshots/home2.png) |                                    |
 
 
 ## 🚀 Features
