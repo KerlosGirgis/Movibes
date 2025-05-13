@@ -20,7 +20,13 @@ import { SearchService } from "../../core/services/search.service";
 import { SidebarService } from "../../core/services/sidebar.service";
 import { Auth, authState, user, User } from "@angular/fire/auth";
 import { firstValueFrom } from "rxjs";
-import { doc, Firestore, getDoc } from "@angular/fire/firestore";
+import {
+  doc,
+  Firestore,
+  getDoc,
+  onSnapshot,
+  Unsubscribe,
+} from "@angular/fire/firestore";
 
 @Component({
   selector: "app-header",
@@ -28,13 +34,14 @@ import { doc, Firestore, getDoc } from "@angular/fire/firestore";
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.css",
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit {
   currenturl: string = "";
   searchquery: string = "";
   isSearch: boolean = false;
   isloged: number = 0;
   initial: String = "";
   wishlistLength: number = 0;
+
   constructor(
     public sidebarService: SidebarService,
     private router: Router,
@@ -44,29 +51,30 @@ export class HeaderComponent implements OnInit, OnChanges {
     private auth: Auth,
     private firestore: Firestore
   ) {}
-  async ngOnChanges(changes: SimpleChanges): Promise<void> {
-    const user = await this.getCurrentUser();
-    if (user != null) {
-      const userRef = doc(this.firestore, `users/${user.uid}`);
-      const userSnap = await getDoc(userRef);
-      this.initial = userSnap.data()?.["name"].charAt(0);
-      this.wishlistLength = userSnap.data()?.["wishlist"].length;
-      this.isloged = 1;
-    } else {
-      this.isloged = 2;
+  private unsubscribeFromWishlist?: () => void;
+  async ngOnInit(): Promise<void> {
+    this.listenToWishlistChanges();
+  }
+  ngOnDestroy(): void {
+    if (this.unsubscribeFromWishlist) {
+      this.unsubscribeFromWishlist();
     }
   }
-  async ngOnInit(): Promise<void> {
-    const user = await this.getCurrentUser();
-    if (user != null) {
-      const userRef = doc(this.firestore, `users/${user.uid}`);
-      const userSnap = await getDoc(userRef);
-      this.initial = userSnap.data()?.["name"].charAt(0);
-      this.wishlistLength = userSnap.data()?.["wishlist"].length;
-      this.isloged = 1;
-    } else {
-      this.isloged = 2;
-    }
+
+  listenToWishlistChanges(): void {
+    authState(this.auth).subscribe((user) => {
+      if (user) {
+        const userRef = doc(this.firestore, `users/${user.uid}`);
+        this.unsubscribeFromWishlist = onSnapshot(userRef, (snapshot) => {
+          const data = snapshot.data();
+          this.initial = data?.["name"]?.charAt(0) ?? "";
+          this.wishlistLength = data?.["wishlist"]?.length ?? 0;
+          this.isloged = 1;
+        });
+      } else {
+        this.isloged = 2;
+      }
+    });
   }
 
   private async getCurrentUser(): Promise<User | null> {
