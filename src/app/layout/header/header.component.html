@@ -1,7 +1,7 @@
 <nav
   class="navbar px-0 mx-0 d-flex justify-content-between align-items-center row mb-3 pt-3"
 >
-  <div class="d-lg-none col-2 col-sm-1">
+  <div class="d-lg-none col-1">
     <button
       class="btn btn-outline-light"
       (click)="sidebarService.toggleSidebar()"
@@ -9,81 +9,50 @@
       ☰
     </button>
   </div>
-  <div class="d-none d-sm-block col-sm-7 col-lg-9">
-    <div class="row align-content-between">
-      <input
-        type="text"
-        class="form-control col-10 nav-search text-white border-0 p-2 flex-grow-1"
-        placeholder="&#x2315;  Search for movies, TV shows..."
-        (focus)="getCurrentUrl();search()"
-        (input)="search()"
-        [(ngModel)]="searchquery"
-        #searchbar
-      />
-
-      <button
-        class="btn reset-button col-2"
-        (click)="reset()"
-        [ngClass]="{
-          'reset-active': searchbar.value.length > 0,
-          disabled: searchbar.value.length === 0
-        }"
-      >
-        Reset
-      </button>
-    </div>
+  <div class="position-relative col-md-8 col-7 col-lg-9 nav-search-wrapper">
+    <i class="bi bi-search text-white position-absolute search-icon"></i>
+    <input
+      type="text"
+      class="form-control nav-search ps-5 text-white border-0 p-3"
+      placeholder="Search for movies"
+      (focus)="getCurrentUrl(); search()"
+      (input)="search()"
+      [(ngModel)]="searchquery"
+      #searchbar
+    />
   </div>
 
-  @if(isloged){
-  <div
-    class="d-flex justify-content-end align-items-center gap-3 col-6 col-sm-2 col-lg-1"
-  >
+  @if(isloged==0){
+  <div class="spinner-border text-light m-3" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  } @else if(isloged==1){
+  <div class="d-flex justify-content-end align-items-center gap-3 col-1">
     <a routerLink="/movies/wishlist">
-      <i
-        title="Wishlist"
-        class="bi bi-heart-fill text-white fs-5"
-        routerLinkActive="heart"
-      ></i>
+      <div class="position-relative">
+        <i
+          title="Wishlist"
+          class="bi bi-heart-fill text-white fs-4"
+          routerLinkActive="heart"
+        ></i>
+        <span
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          style="font-size: 0.6rem; padding: 4px 6px"
+        >
+          {{wishlistLength}}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </div>
     </a>
-    <a routerLink="/movies/profile" routerLinkActive="active-link"
-      ><img
-        src="https://thaka.bing.com/th/id/OIP.awAiMS1BCAQ2xS2lcdXGlwHaHH?rs=1&pid=ImgDetMain"
-        class="rounded-circle profile-img"
-        alt="User"
-    /></a>
+    <a routerLink="/movies/profile" routerLinkActive="active-link">
+      <div class="user-icon" id="userIcon">{{ initial }}</div>
+    </a>
   </div>
-  } @else {
-  <div
-    class="d-flex justify-content-end align-items-center gap-3 col-6 col-sm-3 col-lg-2"
-  >
+  } @else if (isloged==2) {
+  <div class="d-flex justify-content-end align-items-center col-3">
     <div class="btn-animated">
       <button class="btn login-btn" routerLink="/login">sign in</button>
     </div>
   </div>
-
   }
-  <div class="col-12 d-sm-none mt-3">
-    <div class="row align-content-between flex-nowrap">
-      <input
-        type="text"
-        class="form-control col-10 w-100 nav-search text-white border-0 p-2"
-        placeholder="&#x2315;  Search for movies, TV shows..."
-        (focus)="getCurrentUrl()"
-        (input)="search()"
-        [(ngModel)]="searchquery"
-        #searchbar
-      />
-
-      <button
-        class="btn btn-outline-light col-2 reset-button"
-        (click)="reset()"
-        [ngClass]="{
-          'reset-active': searchbar.value.length > 0,
-          disabled: searchbar.value.length === 0
-        }"
-      >
-        Reset
-      </button>
-    </div>
-  </div>
 </nav>

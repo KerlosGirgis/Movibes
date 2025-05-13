@@ -1,12 +1,8 @@
-<!-- <div class="sidebar" [ngClass]="{ 'sidebar': true, 'd-none d-md-block': !isVisible }"> -->
 <div class="sidebar">
-  <img
-    src="/Vector.svg"
-    routerLink="/movies"
-    class="logo"
-    (click)="sidebarService.disppearSidebar()"
-  />
-
+  <a class="navbar-brand d-flex align-items-center ms-3 my-2" href="#">
+  <img src="logo.ico" alt="Movibes Icon" class="logo-icon me-2">
+  <span class="logo-text">Movibes</span>
+  </a>
   <ul class="nav flex-column px-3">
     @for(sec of section;track sec.id){ @if (sec.id == 1) {
     <li
