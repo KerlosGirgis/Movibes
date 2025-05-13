@@ -1,6 +1,6 @@
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { SharedModule } from './../../shared.module';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
 import { Movie } from '../../models/movie';
 import { NgForOf } from '@angular/common';
@@ -11,7 +11,7 @@ import { NgForOf } from '@angular/common';
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
-export class MovieListComponent {
+export class MovieListComponent implements OnInit,OnChanges {
   constructor(private apiService: ApiService) {}
   @Input() category: 'now_playing' | 'popular' | 'top_rated' | 'upcoming' = 'popular';
   title: string = '';

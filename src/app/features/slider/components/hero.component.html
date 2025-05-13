@@ -9,7 +9,7 @@
       <div class="carousel-inner rounded-5">
         <div
           class="carousel-item"
-          *ngFor="let slide of slides; let i = index"
+          *ngFor="let movie of movies; let i = index"
           [class.active]="i === 0"
         >
           <div
@@ -17,10 +17,10 @@
             style="height: 32vh; overflow: hidden;"
           >
             <img
-              [src]="slide.image"
+              [src]="'https://media.themoviedb.org/t/p/original'+movie.backdrop_path"
               class="w-100 h-100"
-              [alt]="slide.title"
-              style="object-fit: cover;"
+              [alt]="movie.title"
+              style="object-fit:fill;"
             />
           </div>
         </div>
@@ -28,7 +28,7 @@
 
       <div class="carousel-indicators">
         <button
-          *ngFor="let slide of slides; let i = index"
+          *ngFor="let slide of movies; let i = index"
           type="button"
           [class.active]="i === 0"
           [attr.aria-current]="i === 0"
