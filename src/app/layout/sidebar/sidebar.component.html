@@ -1,7 +1,7 @@
 <div class="sidebar">
   <a class="navbar-brand d-flex align-items-center ms-3 my-2" href="#">
-    <img src="logo.ico" alt="Movibes Icon" class="logo-icon me-2" />
-    <span class="logo-text">Movibes</span>
+    <img src="logo.ico" alt="Movibes Icon" class="logo-icon me-2 w-25 h-25" />
+    <span class="logo-text fs-3">Movibes</span>
   </a>
   <ul class="nav flex-column px-3">
     @for(sec of section;track sec.id){ @if (sec.id == 1) {
@@ -12,7 +12,8 @@
       [routerLinkActiveOptions]="{ exact: true }"
       (click)="sidebarService.disppearSidebar()"
     >
-      <a class="nav-link text-white">{{ sec.icon }}{{ sec.name }}</a>
+      
+      <a class="nav-link text-white"><i [classList]="sec.icon+' me-2'"></i>{{ sec.name }}</a>
     </li>
 
     } @else {
@@ -24,13 +25,10 @@
       (click)="sidebarService.disppearSidebar()"
     >
       <a (click)="navigate(sec.id)" class="nav-link text-white"
-        >{{ sec.icon }}{{ sec.name }}</a
+        ><i [classList]="sec.icon+' me-2'"></i>{{ sec.name }}</a
       >
     </li>
 
     } } @empty { there is no section }
-    <li>
-      @if (isloged) {}
-    </li>
   </ul>
 </div>

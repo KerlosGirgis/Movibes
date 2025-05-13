@@ -44,30 +44,30 @@ export class SidebarComponent implements OnInit,OnChanges {
     }
   selectedSection: number = 1;
   section: ISection[] = [
-    { icon: "🏠 ", name: "Home", id: 1, href: "/movies" },
+    { icon: "bi bi-house", name: "Home", id: 1, href: "/movies" },
     {
-      icon: "🎥 ",
+      icon: "bi bi-camera-reels",
       name: "Now Playing",
       id: 2,
       href: "/movies/movies-categories",
       param: "now_playing",
     },
     {
-      icon: "🔥 ",
+      icon: "bi bi-fire",
       name: "Popular",
       id: 3,
       href: "/movies/movies-categories",
       param: "popular",
     },
     {
-      icon: "⭐ ",
+      icon: "bi bi-star",
       name: "Top Rated",
       id: 4,
       href: "/movies/movies-categories",
       param: "top_rated",
     },
     {
-      icon: "📡 ",
+      icon: "bi bi-rocket-takeoff",
       name: "Upcoming",
       id: 5,
       href: "/movies/movies-categories",

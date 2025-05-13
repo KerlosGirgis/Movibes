@@ -1,24 +1,28 @@
 <div class="row mx-0">
+  <!-- Sidebar for large screens -->
   <app-sidebar
-    class="d-none d-lg-block col-lg-3 col-xxl-2 px-0"
+    class="d-none d-lg-flex col-lg-2 col-xxl-1 px-0"
   ></app-sidebar>
 
-  <div
-    class="col-12 col-lg-9 col-xxl-10"
-  >
+  <!-- Main content area -->
+  <div class="col-12 col-lg-10 col-xxl-11">
+    <!-- Header always visible -->
     <div class="row">
-      <app-header ></app-header>
+      <app-header></app-header>
     </div>
+
+    <!-- Sidebar for small screens (conditionally rendered) -->
     @if(sidebarService.isVisible){
-      <div class="row" >
+      <div class="row">
         <app-sidebar
-          class="d-lg-none col-lg-2  px-0"
+          class="d-lg-none col-12 px-0"
         ></app-sidebar>
       </div>
     }
 
+    <!-- Router outlet -->
     <div class="row">
-<router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
