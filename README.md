@@ -58,5 +58,5 @@ movibes/
 └── README.md
 ```
 ## 👤 Author
-Developed with ❤️ by Kerlos Girgis
-📧 Kerlos.girgis1@gmail.com
+# Developed with ❤️ by Kerlos Girgis
+# 📧 Kerlos.girgis1@gmail.com
