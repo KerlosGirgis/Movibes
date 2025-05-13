@@ -1,59 +1,62 @@
-# Movie
+# 🎬 Movibes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+![Angular](https://img.shields.io/badge/Angular-v19-red.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/github/license/KerlosGirgis/Movibes)
+[![GitHub Pages](https://img.shields.io/badge/demo-live-blue)](https://kerlosgirgis.github.io/Movibes/movies)
 
-## Development server
+**Movibes** is a sleek and modern movie browsing web application built with Angular. It allows users to explore a curated selection of movies, view detailed information, and enjoy a seamless user experience.
 
-To start a local development server, run:
+<!-- ![Preview Screenshot](https://user-images.githubusercontent.com/123456789/your-screenshot.png) Replace this with actual screenshot URL -->
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📸 Screenshots
 
-## Code scaffolding
+| Home Page                           | Movie Details                        |
+|------------------------------------|--------------------------------------|
+| ![Home](https://your-home-screenshot-url) | ![Details](https://your-details-screenshot-url) |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+> _Note: You can host screenshots in your repo under `/assets/screenshots/` or use GitHub Issues uploads to get URLs._
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Features
 
-```bash
-ng generate --help
-```
+- Browse a diverse collection of movies with high-quality visuals.
+- View detailed movie information including synopsis and ratings.
+- Responsive design optimized for mobile, tablet, and desktop.
+- Built using Angular’s component-based architecture.
+- Smooth routing between pages.
 
-## Building
+---
 
-To build the project run:
+## 🛠️ Technologies Used
 
-```bash
-ng build
-```
+- [Angular CLI](https://angular.io/cli) v19.2.9
+- TypeScript
+- HTML5 & SCSS
+- RxJS
+- Angular Router
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+## 📁 Folder Structure
 
 ```bash
-ng e2e
+movibes/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── app.module.ts
+│   ├── assets/
+│   └── index.html
+├── angular.json
+├── package.json
+└── README.md
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 👤 Author
+Developed with ❤️ by Kerlos Girgis
+📧 Kerlos.girgis1@gmail.com
