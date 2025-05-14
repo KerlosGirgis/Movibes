@@ -113,6 +113,6 @@ export class HeaderComponent implements OnInit {
   }
     logout() {
     this.authService.logout();
-    location.reload();
+    location.replace("/movies");
   }
 }
