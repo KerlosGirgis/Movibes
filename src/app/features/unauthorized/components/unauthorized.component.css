@@ -1,131 +1,61 @@
-/* Background with fade-in */
-.container-fluid {
-  background-color: #212529;
-  animation: fadeInBackground 2s ease-out;
+body {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: "Arial", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
-/* Centered content */
-.text-center {
-  max-width: 600px;
+.restricted-container {
+  max-width: 90vw;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 15px;
+  background-color: #1e1e1e;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
 }
 
-/* Box shadow for depth */
-.shadow-lg {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.restricted-icon {
+  font-size: 100px;
+  margin-bottom: 20px;
+  animation: wobble 2s infinite;
 }
 
-/* Custom teal button with hover scaling */
-.btn-teal {
-  background-color: #008080;
-  border-color: #006f6f;
-  transition: all 0.3s ease-in-out;
-  animation: bounceIn 1s ease-out;
-}
-.btn-teal:hover {
-  background-color: #006666;
-  border-color: #004d4d;
-  animation: pulse 0.6s infinite;
+.restricted-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ff5555;
 }
 
-/* Fade-in for text and other elements */
-.animate__animated {
-  animation-duration: 1.5s;
-  animation-fill-mode: both;
-}
-.animate__fadeIn {
-  animation-name: fadeIn;
+.restricted-message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-/* Image animations: zoom + float */
-.img-animate {
-  animation: zoomFadeIn 1.2s ease-out, float 3s ease-in-out infinite;
+.try-again-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.h-button {
-  background-color: #3dd2cc;
-  color: white;
-  border: white SOLID 1px;
-}
-.h-button:hover {
-  background-color: white;
-  color: #3dd2cc;
-  border: #3dd2cc SOLID 1px;
+.try-again-btn:hover {
+  transform: scale(1.05);
 }
 
-.l-button:hover {
-  background-color: white;
-  color: #3dd2cc;
-}
-
-/* Keyframes Section */
-@keyframes fadeInBackground {
+@keyframes wobble {
   0% {
-    opacity: 0;
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
   }
   100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes zoomFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
+    transform: rotate(0deg);
   }
 }
