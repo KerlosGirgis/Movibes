@@ -1,11 +1,12 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component, OnChanges, OnInit, SecurityContext, SimpleChanges } from '@angular/core';
 import { ApiService } from '../../../core/services/api.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { Movie } from '../../../shared/models/movie';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from '../../not-found/components/not-found.component';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MovieCardComponent } from "../../../shared/components/movie-card/movie-card.component";
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-details',
@@ -19,16 +20,25 @@ export class DetailsComponent implements OnInit {
   isLoading: boolean = true;
   recommendations: Movie[] = [];
   videoLink:SafeUrl;
-
+  private routerSub: any;
   movie: Movie | null = null;
   constructor(
     private movieService: ApiService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {
     this.videoLink=this.sanitizer.bypassSecurityTrustResourceUrl('about:blank');
   }
   ngOnInit(): void {
+        this.routerSub = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
     this.route.params.subscribe((params) => {
       const movieId = Number(params['id']);
       this.isLoading = true;
@@ -59,5 +69,11 @@ export class DetailsComponent implements OnInit {
   notFound(){
     location.replace("/not-found")
     return null;
+  }
+
+    ngOnDestroy() {
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
   }
 }
