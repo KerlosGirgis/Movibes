@@ -8,7 +8,7 @@ li {
   margin: 1vh 0;
   cursor: pointer;
 }
-li:hover:not(:last-child) {
+li:hover {
   color: #3dd2cc;
   border-right: 5px solid #127e7a;
   transition: border 200ms ease-out;
@@ -82,7 +82,7 @@ a {
     padding: 10px;
     width: 100%;
   }
-  li:last-child {
+  li {
     margin-bottom: 0 !important;
   }
   .selected-section {
