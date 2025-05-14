@@ -26,7 +26,10 @@ a {
   font-size: 1rem;
   transition: transform 1000ms ease-out;
 }
-
+.logo-icon{
+  max-width: 50px;
+  max-height: 50px;
+}
 .logo {
   cursor: pointer;
   width: 80%;
