@@ -78,4 +78,17 @@ export class ApiService {
     const params = new HttpParams().set('api_key', this.apiKey);
     return this.http.get<any>(url, { params }).pipe(map((res) => res.results));
   }
+    getMovieTrailerUrl(movieId: number): Observable<string | null> {
+    const url = `${this.baseUrl}/${movieId}/videos?api_key=${this.apiKey}`;
+
+    return this.http.get<any>(url).pipe(
+      map(response => {
+        const videos = response.results;
+        const trailer = videos.find((v: any) =>
+          v.site === 'YouTube' && (v.type === 'Trailer' || v.type === 'Teaser')
+        );
+        return trailer ? `https://www.youtube.com/embed/${trailer.key}` : null;
+      })
+    );
+  }
 }
