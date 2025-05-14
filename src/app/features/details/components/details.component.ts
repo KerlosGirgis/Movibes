@@ -5,11 +5,12 @@ import { Movie } from '../../../shared/models/movie';
 import { CommonModule } from '@angular/common';
 import { NotFoundComponent } from '../../not-found/components/not-found.component';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { MovieCardComponent } from "../../../shared/components/movie-card/movie-card.component";
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, MovieCardComponent],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })

@@ -8,119 +8,86 @@
 
 <ng-template #loadedContent>
   @if (movie) {
-  <div class="container pb-3">
-    <div class="row rounded-5 bg-dark justify-content-center pb-3">
-      <div
-        class="col-12 mt-0 rounded-5 overflow-hidden ratio ratio-21x9"
-        style="border-radius: 1.5rem !important"
-      >
+  <div class="container py-4">
+    <div class="row bg-dark rounded-5 shadow-lg p-4">
+      <div class="col-12 mb-4 rounded-4 overflow-hidden ratio ratio-21x9">
         <iframe
-          class="col-12 rounded-top-0 rounded-bottom-5"
+          class="w-100 h-100 border-0 rounded"
           [src]="videoLink"
           title="Movie Trailer"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
       </div>
-      <div class="mt-5 col-12 row">
-        <!-- left Section -->
-        <div class="col-sm-12 col-md-4 mb-4">
-          <img
-            [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-            class="card-img rounded-4 h-100 w-100"
-            alt="Movie Poster"
-          />
+
+      <div class="col-12 row gx-4 gy-4 m-auto">
+        <div class="col-12 col-md-4">
+          <app-movie-card [movie]="movie" class="w-100"></app-movie-card>
         </div>
-        <!-- right Section -->
-        <div class="col-sm-12 col-md-8">
-          <div class="rounded-4 text-light">
-            <div class="top d-flex flex-wrap align-items-center mb-3">
-              <h2 class="title me-4">{{ movie.title }}</h2>
-              <div class="d-flex flex-wrap align-items-center gap-2">
-                <span class="badge bg-secondary">{{ movie.release_date }}</span>
-                <span class="badge bg-secondary" *ngIf="movie?.adult === false"
-                  >PG-13</span
-                >
-                <span class="badge bg-secondary" *ngIf="movie?.adult === true"
-                  >PG-18</span
-                >
-                <span class="badge bg-secondary">{{ movie.runtime }}m</span>
-                <span
-                  class="badge main-color text-dark"
-                  *ngFor="let genre of movie.genres"
-                >
-                  {{ genre.name }}
-                </span>
-              </div>
-            </div>
 
-            <!-- Description -->
-            <div style="max-height: 150px; overflow: hidden" class="fs-5">
-              {{ movie.overview}}
-            </div>
+        <div class="col-12 col-md-8 text-light">
+          <h2 class="fw-bold">{{ movie.title }}</h2>
 
-            <div class="border-top border-secondary pt-3 mt-4">
-              <div class="border-bottom border-secondary py-2">
-                <strong>Status:</strong>
-                <span class="main-font-color">{{ movie.status }}</span>
-              </div>
-              <div class="border-bottom border-secondary py-2">
-                <strong>Production Companies:</strong>
-                <span
-                  *ngFor="let com of movie.production_companies"
-                  class="main-font-color"
-                >
-                  {{ com.name }} <span class="text-light">,</span>
-                </span>
-              </div>
-              <div class="border-bottom border-secondary py-2">
-                <strong>Recommendations:</strong>
-                <div class="d-flex flex-wrap gap-2 mt-2">
-                  <div
-                    *ngFor="let rec of recommendations | slice : 0 : 5"
-                    class="text-info"
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+            <span class="badge bg-secondary">{{ movie.release_date }}</span>
+            <span class="badge bg-secondary" *ngIf="movie?.adult === false"
+              >PG-13</span
+            >
+            <span class="badge bg-secondary" *ngIf="movie?.adult === true"
+              >PG-18</span
+            >
+            <span class="badge bg-secondary">{{ movie.runtime }}m</span>
+            <span
+              class="badge bg-info text-dark"
+              *ngFor="let genre of movie.genres"
+            >
+              {{ genre.name }}
+            </span>
+          </div>
+
+          <p class="fs-5 text-light mb-4">{{ movie.overview }}</p>
+
+          <div class="border-top border-secondary pt-3">
+            <p class="mb-2">
+              <strong>Status:</strong>
+              <span class="text-info">{{ movie.status }}</span>
+            </p>
+
+            <p class="mb-2">
+              <strong>Production Companies:</strong>
+              <ng-container
+                *ngFor="let com of movie.production_companies; let last = last"
+              >
+                <span class="text-info">{{ com.name }}</span
+                ><span *ngIf="!last" class="text-light">, </span>
+              </ng-container>
+            </p>
+
+            <p class="mb-2">
+              <strong>Production Countries:</strong>
+              <ng-container
+                *ngFor="
+                  let country of movie.production_countries;
+                  let last = last
+                "
+              >
+                <span class="text-info">{{ country.name }}</span
+                ><span *ngIf="!last" class="text-light">, </span>
+              </ng-container>
+            </p>
+
+            <div class="mt-3 scroll-wrapper">
+              <div class="overflow-auto scroll-x-hidden scroll-fade rounded-4">
+                <div class="d-flex flex-nowrap gap-2">
+                  <ng-container
+                    *ngFor="let rec of recommendations | slice : 0 : 10"
                   >
-                    <a
-                      [routerLink]="['/movies/details', rec.id]"
-                      class="text-info text-decoration-none main-font-color"
-                    >
-                      {{ rec.title }}
-                    </a>
-                    <span class="text-light">,</span>
-                  </div>
+                    <app-movie-card
+                      [movie]="rec"
+                      style="width: 6.7rem; flex: 0 0 auto"
+                    ></app-movie-card>
+                  </ng-container>
                 </div>
-              </div>
-              <div class="border-bottom border-secondary py-2">
-                <strong>Production Countries:</strong>
-                <span
-                  *ngFor="let country of movie.production_countries"
-                  class="main-font-color"
-                >
-                  {{ country.name }} <span class="text-light">,</span>
-                </span>
-              </div>
-            </div>
-
-            <!-- Buttons -->
-            <div class="d-flex gap-3 mt-4">
-              <button class="btn btn-outline-info rounded-pill rate-btn">
-                Top Rated Movie #{{ randomNumber }}
-              </button>
-              <div class="dropdown">
-                <button
-                  class="btn btn-outline-light dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  Spoken Language
-                </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li class="mb-1" *ngFor="let lang of movie.spoken_languages">
-                    <span class="dropdown-item active spoken-li">{{
-                      lang.english_name
-                    }}</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

@@ -1,35 +1,48 @@
-/* .position {
-  position: absolute;
-  top: 110px;
-  left: 290px;
-} */
-.main-color {
-  background-color: #3dd2cc;
+::-webkit-scrollbar {
+  width: 6px;
 }
-.main-font-color {
-  color: #3dd2cc !important;
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
-.spoken-li {
-background-color: #3dd2cc!important;}
-.rate-btn {
-  color: #3dd2cc;
-  outline-color: #3dd2cc!important;
-}
-@media (max-width: 1090px) {
-  .hide {
-    display: none;
-  }
-}
-/* .position {
-  position: absolute;
-  top: 110px;
-  left: 290px;
+.scroll-x-hidden::-webkit-scrollbar {
+  display: none; 
 }
 
-@media (max-width: 768px) {
-  .position {
-    position: static;
-    top: auto;
-    left: auto;
-  }
-} */
+.scroll-x-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.scroll-wrapper {
+  position: relative;
+}
+
+.scroll-x-hidden {
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-x-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-fade::before,
+.scroll-fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.scroll-fade::before {
+  left: 0;
+  background: linear-gradient(to right, rgb(39, 39, 39), transparent);
+}
+.scroll-fade::after {
+  right: 0;
+  background: linear-gradient(to left, rgb(39, 39, 39), transparent);
+}
